@@ -10,7 +10,7 @@ Aplikacija eID Helper ni na koji način nije povezana niti je dio sustava elektr
 
 
 ## Gdje, što i zašto?
-Jedan od razloga zašto i jeste ovdje je problem potpisivanja servisa eID-a prilikom potpisivanja, često neuspješno. Na bazi službenog odgovora podrške eOI, kada se desi navedeni problem, potrebno je pronaći i ugasiti proces koji radi na portu "55555" pa zatim ponovno pokrenuti Signer.exe.
+Jedan od razloga zašto i jeste ovdje je problem servisa eID-a prilikom potpisivanja, često neuspješno. Na bazi službenog odgovora podrške eOI, kada se desi navedeni problem, potrebno je pronaći i ugasiti proces koji radi na portu "55555" pa zatim ponovno pokrenuti Signer.exe.
 
 ## Aplikacija eID Helper radi upravo to.
 1. Pronalazi proces na portu "55555"
