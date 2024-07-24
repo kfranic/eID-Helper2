@@ -6,6 +6,7 @@
 ## Zašto fork:
 Razlog zašto sam napravio fork sa https://github.com/mariosemes/eID-Helper je da podjelim male promjene koje su potencijalno zanimljive nekom drugom i kako mi tool nije pomogao da pdijelim detalje kako debugirati problem.
 Kod mene se javio isti problem:
+
 ![image](https://github.com/user-attachments/assets/f5d4efa9-999a-444b-a1a9-7ca0e0e12a88)
 
 no kod mene je taj port nije bio otvoren već je problem bio što je port 55555 u excluded range-u.
@@ -43,6 +44,11 @@ no kod mene je taj port nije bio otvoren već je problem bio što je port 55555 
     C:\>
 
 
+Fix je bio:
+    
+    net stop winnat
+    netsh int ipv4 add excludedportrange protocol=tcp startport=55555 numberofports=1
+    # reboot
 
 ## Napomena:
 Aplikacija eID Helper ni na koji način nije povezana niti je dio sustava elektroničke osobne iskaznice (eOI) građana Republike Hrvatske (eid.hr). Aplikacija je Open-Source te zahvaljujući problemima s eID aplikacijom, tako je i nastala.
