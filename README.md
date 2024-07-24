@@ -1,23 +1,48 @@
-# eID Helper v1.0
+# eID Helper Fork v1.0
 
-[![GitHub Release](https://github-basic-badges.herokuapp.com/release/mariosemes/eID-Helper.svg)]() [![GitHub Download Count](https://github-basic-badges.herokuapp.com/downloads/mariosemes/eID-Helper/total.svg)]() [![GitHub Issues Open](https://github-basic-badges.herokuapp.com/issues/mariosemes/eID-Helper.svg)]()
 
-##### Preuzimanje (x86 & x64):
-https://github.com/mariosemes/eID-Helper/releases
+[![GitHub Release](https://github-basic-badges.herokuapp.com/release/kfranic/eID-Helper.svg)]() [![GitHub Download Count](https://github-basic-badges.herokuapp.com/downloads/kfranic/eID-Helper/total.svg)]() [![GitHub Issues Open](https://github-basic-badges.herokuapp.com/issues/kfranic/eID-Helper.svg)]()
 
-##### Napomena:
+## Zašto fork:
+Razlog zašto sam napravio fork sa https://github.com/mariosemes/eID-Helper je da podjelim male promjene koje su potencijalno zanimljive nekom drugom i kako mi tool nije pomogao da pdijelim detalje kako debugirati problem.
+Kod mene se javio isti problem:
+![image](https://github.com/user-attachments/assets/f5d4efa9-999a-444b-a1a9-7ca0e0e12a88)
+
+no kod mene je taj port nije bio otvoren već je problem bio što je port 55555 u excluded range-u.
+
+    C:\>netsh int ipv4 show excludedportrange protocol=tcp
+    
+    Protocol tcp Port Exclusion Ranges
+    
+    Start Port    End Port
+    ----------    --------
+          5357        5357
+         49676       49775
+         49876       49975
+         50000       50059     *
+         50160       50259
+         50360       50459
+         50560       50659
+         50760       50859
+         54640       54739
+         54740       54839
+         54840       54939
+         54940       55039
+         55075       55174
+         55175       55274
+         55275       55374
+         55375       55474
+         55475       55574
+         56006       56105
+         56106       56205
+         56206       56305
+    
+    * - Administered port exclusions.
+    
+    
+    C:\>
+
+
+
+## Napomena:
 Aplikacija eID Helper ni na koji način nije povezana niti je dio sustava elektroničke osobne iskaznice (eOI) građana Republike Hrvatske (eid.hr). Aplikacija je Open-Source te zahvaljujući problemima s eID aplikacijom, tako je i nastala.
-
-
-## Gdje, što i zašto?
-Jedan od razloga zašto i jeste ovdje je problem servisa eID-a prilikom potpisivanja, često neuspješno. Na bazi službenog odgovora podrške eOI, kada se desi navedeni problem, potrebno je pronaći i ugasiti proces koji radi na portu "55555" pa zatim ponovno pokrenuti Signer.exe.
-
-## Aplikacija eID Helper radi upravo to.
-1. Pronalazi proces na portu "55555"
-2. Silno ga gasi ukoliko je aktivan
-3. Pronalazi Signer.exe na računalu
-4. Ponovno pokreće aplikaciju za potpisivanje
-
-## Windows Security
-Windows će prepoznati eID Helper kao prijetnju, iz razloga što autor aplikacije nije prijavljen (da skratim... nisam lud), stoga paljenje aplikacije je u potpunosti na vama.
-Jedan od razloga zašto je aplikacija na GitHub-u je transparentnost koda.
